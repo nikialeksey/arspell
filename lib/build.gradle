@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 28
+    }
+}
+
+dependencies {
+    implementation 'com.atlascopco:hunspell-bridj:1.0.4'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
+}
+
+ext {
+    bintrayRepo = 'android'
+    bintrayName = 'arspell'
+
+    publishedGroupId = 'com.nikialeksey'
+    artifact = 'arspell'
+    libraryName = 'arspell'
+
+    libraryDescription = 'Android resource spell testing library'
+
+    siteUrl = 'https://github.com/nikialeksey/arspell'
+    gitUrl = 'https://github.com/nikialeksey/arspell.git'
+
+    libraryVersion = '0.0.1'
+
+    developerId = 'nikialeksey'
+    developerName = 'Alexey Nikitin'
+    developerEmail = 'nikialeksey@gmail.com'
+    licenseName = 'MIT License'
+    licenseUrl = 'https://github.com/nikialeksey/arspell/blob/master/LICENSE'
+    allLicenses = ['MIT']
+
+}
+if (project.rootProject.file('local.properties').exists()) {
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+}
