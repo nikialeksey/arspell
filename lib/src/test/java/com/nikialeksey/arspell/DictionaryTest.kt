@@ -13,7 +13,13 @@ class DictionaryTest {
                 "./src/test/assets/en_US/index.dic",
                 "./src/test/assets/en_US/index.aff"
             ),
-            AndroidStrings(File("./src/test/res/values/dictionary.xml"))
+            IgnoreValuesStrings(
+                IgnoreKeysStrings(
+                    AndroidStrings(File("./src/test/res/values/dictionary.xml")),
+                    setOf("ignored")
+                ),
+                setOf("QWE")
+            )
         ).check()
         Assert.assertTrue(ErrorMessage(errors).asString(), errors.isEmpty())
     }
