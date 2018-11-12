@@ -1,5 +1,8 @@
 # Arspell
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/nikialeksey/arspell/blob/master/LICENSE)
+[![API](https://img.shields.io/badge/API-16%2B-blue.svg?style=flat)](https://android-arsenal.com/api?level=16)
+
 Android resource spell testing library
 
 ## How to
@@ -47,6 +50,12 @@ class ResourcesTest {
     }
 }
 ```
+
+## Hunspell dictionaries
+
+[Dictionaries](https://github.com/wooorm/dictionaries)
+
+[Hunspell man](https://www.systutorials.com/docs/linux/man/4-hunspell/) for adding new words in any dictionary.
 
 ## Publish
 ```bash
