@@ -28,7 +28,7 @@ ext {
     siteUrl = 'https://github.com/nikialeksey/arspell'
     gitUrl = 'https://github.com/nikialeksey/arspell.git'
 
-    libraryVersion = '0.0.2'
+    libraryVersion = '0.0.3'
 
     developerId = 'nikialeksey'
     developerName = 'Alexey Nikitin'
@@ -39,6 +39,50 @@ ext {
 
 }
 if (project.rootProject.file('local.properties').exists()) {
-    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+    apply plugin: 'com.github.dcendents.android-maven'
+    group = publishedGroupId
+    install {
+        repositories.mavenInstaller {
+            pom {
+                project {
+                    packaging 'aar'
+                    groupId publishedGroupId
+                    artifactId artifact
+
+                    name libraryName
+                    description libraryDescription
+                    url siteUrl
+
+                    licenses {
+                        license {
+                            name licenseName
+                            url licenseUrl
+                        }
+                    }
+                    developers {
+                        developer {
+                            id developerId
+                            name developerName
+                            email developerEmail
+                        }
+                    }
+                    scm {
+                        connection gitUrl
+                        developerConnection gitUrl
+                        url siteUrl
+
+                    }
+                    dependencies {
+                        dependency {
+                            groupId 'com.atlascopco'
+                            artifactId 'hunspell-bridj'
+                            version '1.0.4'
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
 }
