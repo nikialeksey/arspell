@@ -85,4 +85,29 @@ if (project.rootProject.file('local.properties').exists()) {
     }
 
     apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+    apply plugin: 'maven-publish'
+    publishing {
+        publications {
+            arspell(MavenPublication) {
+                arspell(MavenPublication) {
+                    artifact(sourcesJar)
+                    artifact("$buildDir/outputs/aar/lib-release.aar")
+
+                    groupId publishedGroupId
+                    artifactId artifact
+                    version libraryVersion
+
+                    pom.withXml {
+                        def dependenciesNode = asNode().appendNode('dependencies')
+                        def dependencyNode = dependenciesNode.appendNode('dependency')
+                        dependencyNode.appendNode('groupId', 'com.atlascopco')
+                        dependencyNode.appendNode('artifactId', 'hunspell-bridj')
+                        dependencyNode.appendNode('version', '1.0.4')
+                    }
+                }
+            }
+        }
+    }
+    bintray.publications = ['arspell']
+    bintray.configurations = []
 }
