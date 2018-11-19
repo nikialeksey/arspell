@@ -3,20 +3,12 @@ package com.nikialeksey.arspell
 import com.atlascopco.hunspell.Hunspell
 
 class HunspellCheck(
-    private val hunspell: Hunspell,
-    private val strings: Strings
+    private val origin: SpellCheck
 ) : SpellCheck {
 
+    constructor(hunspell: Hunspell, strings: Strings) : this(SimpleCheck(HunspellDictionary(hunspell), strings))
+
     override fun check(): List<Error> {
-        val result = mutableListOf<Error>()
-
-        for (word in strings.words()) {
-            val asString = word.asString()
-            if (!hunspell.isCorrect(asString)) {
-                result.add(HunspellError(word.key(), asString, hunspell))
-            }
-        }
-
-        return result
+        return origin.check()
     }
 }
