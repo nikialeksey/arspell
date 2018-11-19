@@ -7,7 +7,7 @@ class ErrorMessage(
         return if (errors.isEmpty()) {
             ""
         } else {
-            errors.joinToString { "Key: ${it.key()}, word: ${it.word()}, suggests: ${it.suggests()}" }
+            errors.joinToString("\n") { "Key: ${it.key()}, word: ${it.word()}, suggests: ${it.suggests()}" }
         }
     }
 }
