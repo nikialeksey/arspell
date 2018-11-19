@@ -54,6 +54,35 @@ class ResourcesTest {
 }
 ```
 
+## Checking every word in multiple dictionaries
+```kotlin
+class ResourcesTest {
+    @Test
+    fun ruEnSpell() {
+        val errors = SimpleCheck(
+            DictionaryGroup(
+                listOf(
+                    HunspellDictionary(
+                        Hunspell(
+                            "./src/test/assets/en_US/index.dic",
+                            "./src/test/assets/en_US/index.aff"
+                        )
+                    ),
+                    HunspellDictionary(
+                        Hunspell(
+                            "./src/test/assets/ru/index.dic",
+                            "./src/test/assets/ru/index.aff"
+                        )
+                    )
+                )
+            ),
+            AndroidStrings(File("./src/test/res/values/dictionary.xml"))
+        ).check()
+        Assert.assertTrue(ErrorMessage(errors).asString(), errors.isEmpty())
+    }
+}
+```
+
 ## Hunspell dictionaries
 
 [Dictionaries](https://github.com/wooorm/dictionaries)
