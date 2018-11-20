@@ -1,7 +1,11 @@
 # Arspell
 
+[![Build Status](https://travis-ci.org/nikialeksey/arspell.svg?branch=master)](https://travis-ci.org/nikialeksey/arspell)
+[![codecov](https://codecov.io/gh/nikialeksey/arspell/branch/master/graph/badge.svg)](https://codecov.io/gh/nikialeksey/arspell)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/nikialeksey/arspell/blob/master/LICENSE)
 [![Download](https://api.bintray.com/packages/nikialeksey/android/arspell/images/download.svg)](https://bintray.com/nikialeksey/android/arspell/_latestVersion)
+
+@todo #9:30m Add coverage gate
 
 Android resource spell testing library
 
