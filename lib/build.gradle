@@ -1,13 +1,5 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-
-android {
-    compileSdkVersion 28
-    defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 28
-    }
-}
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
 
 dependencies {
     implementation 'com.atlascopco:hunspell-bridj:1.0.4'
@@ -28,7 +20,7 @@ ext {
     siteUrl = 'https://github.com/nikialeksey/arspell'
     gitUrl = 'https://github.com/nikialeksey/arspell.git'
 
-    libraryVersion = '0.0.4'
+    libraryVersion = '1.0.0'
 
     developerId = 'nikialeksey'
     developerName = 'Alexey Nikitin'
@@ -39,13 +31,13 @@ ext {
 
 }
 if (project.rootProject.file('local.properties').exists()) {
-    apply plugin: 'com.github.dcendents.android-maven'
+    apply plugin: 'maven'
     group = publishedGroupId
     install {
         repositories.mavenInstaller {
             pom {
                 project {
-                    packaging 'aar'
+                    packaging 'jar'
                     groupId publishedGroupId
                     artifactId artifact
 
@@ -72,13 +64,6 @@ if (project.rootProject.file('local.properties').exists()) {
                         url siteUrl
 
                     }
-                    dependencies {
-                        dependency {
-                            groupId 'com.atlascopco'
-                            artifactId 'hunspell-bridj'
-                            version '1.0.4'
-                        }
-                    }
                 }
             }
         }
@@ -89,21 +74,19 @@ if (project.rootProject.file('local.properties').exists()) {
     publishing {
         publications {
             arspell(MavenPublication) {
-                arspell(MavenPublication) {
-                    artifact(sourcesJar)
-                    artifact("$buildDir/outputs/aar/lib-release.aar")
+                artifact(sourcesJar)
+                artifact("$buildDir/libs/lib-${libraryVersion}.jar")
 
-                    groupId publishedGroupId
-                    artifactId artifact
-                    version libraryVersion
+                groupId publishedGroupId
+                artifactId artifact
+                version libraryVersion
 
-                    pom.withXml {
-                        def dependenciesNode = asNode().appendNode('dependencies')
-                        def dependencyNode = dependenciesNode.appendNode('dependency')
-                        dependencyNode.appendNode('groupId', 'com.atlascopco')
-                        dependencyNode.appendNode('artifactId', 'hunspell-bridj')
-                        dependencyNode.appendNode('version', '1.0.4')
-                    }
+                pom.withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', 'com.atlascopco')
+                    dependencyNode.appendNode('artifactId', 'hunspell-bridj')
+                    dependencyNode.appendNode('version', '1.0.4')
                 }
             }
         }
