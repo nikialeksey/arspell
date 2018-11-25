@@ -1,11 +1,16 @@
-package com.nikialeksey.arspell
+package com.nikialeksey.arspell.check
 
 import com.atlascopco.hunspell.Hunspell
+import com.nikialeksey.arspell.ErrorMessage
+import com.nikialeksey.arspell.checks.HunspellCheck
+import com.nikialeksey.arspell.strings.AndroidStrings
+import com.nikialeksey.arspell.strings.IgnoreKeysStrings
+import com.nikialeksey.arspell.strings.IgnoreWordsStrings
 import org.junit.Assert
 import org.junit.Test
 import java.io.File
 
-class DictionaryTest {
+class HunspellCheckTest {
     @Test
     fun spellDefault() {
         val errors = HunspellCheck(
@@ -13,7 +18,7 @@ class DictionaryTest {
                 "./src/test/assets/en_US/index.dic",
                 "./src/test/assets/en_US/index.aff"
             ),
-            IgnoreValuesStrings(
+            IgnoreWordsStrings(
                 IgnoreKeysStrings(
                     AndroidStrings(File("./src/test/res/values/dictionary.xml")),
                     setOf("ignored")

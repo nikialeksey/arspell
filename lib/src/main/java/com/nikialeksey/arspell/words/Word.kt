@@ -1,4 +1,4 @@
-package com.nikialeksey.arspell
+package com.nikialeksey.arspell.words
 
 interface Word {
     fun key(): String

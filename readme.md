@@ -10,7 +10,7 @@ Android resource spell testing library
 ## How to
 ```gradle
 dependencies {
-    testImplementation('com.nikialeksey:arspell:1.0.0')
+    testImplementation('com.nikialeksey:arspell:2.0.0')
 }
 ```
 
@@ -87,6 +87,8 @@ class ResourcesTest {
 [Dictionaries](https://github.com/wooorm/dictionaries)
 
 [Hunspell man](https://www.systutorials.com/docs/linux/man/4-hunspell/) for adding new words in any dictionary.
+
+## @todo #10:30m Write docs about language tool using
 
 ## Publish
 ```bash

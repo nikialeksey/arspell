@@ -1,4 +1,4 @@
-package com.nikialeksey.arspell
+package com.nikialeksey.arspell.words
 
 class IgnoreValuesWords(
     private val origin: Words,

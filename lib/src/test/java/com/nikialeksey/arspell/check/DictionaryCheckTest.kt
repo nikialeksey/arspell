@@ -1,13 +1,19 @@
-package com.nikialeksey.arspell
+package com.nikialeksey.arspell.check
 
 import com.atlascopco.hunspell.Hunspell
+import com.nikialeksey.arspell.ErrorMessage
+import com.nikialeksey.arspell.checks.DictionaryCheck
+import com.nikialeksey.arspell.dictionary.DictionaryGroup
+import com.nikialeksey.arspell.dictionary.HunspellDictionary
+import com.nikialeksey.arspell.strings.SimpleString
+import com.nikialeksey.arspell.strings.SimpleStrings
 import org.junit.Assert
 import org.junit.Test
 
-class DictionaryGroupTest {
+class DictionaryCheckTest {
     @Test
     fun twoLanguage() {
-        val errors = SimpleCheck(
+        val errors = DictionaryCheck(
             DictionaryGroup(
                 listOf(
                     HunspellDictionary(
@@ -25,11 +31,9 @@ class DictionaryGroupTest {
                 )
             ),
             SimpleStrings(
-                SimpleWords(
-                    listOf(
-                        SimpleWord("en", "Hello"),
-                        SimpleWord("ru", "Привет")
-                    )
+                listOf(
+                    SimpleString("en", "Hello"),
+                    SimpleString("ru", "Привет")
                 )
             )
         ).check()

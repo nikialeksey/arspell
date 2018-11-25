@@ -7,14 +7,15 @@ targetCompatibility = 1.8
 
 dependencies {
     implementation 'com.atlascopco:hunspell-bridj:1.0.4'
+    implementation 'org.languagetool:language-all:4.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
 }
 
 jacocoTestReport {
     reports {
-        xml.enabled true
-        html.enabled false
+        xml.enabled = true
+        html.enabled = false
     }
 }
 
@@ -33,7 +34,7 @@ ext {
     siteUrl = 'https://github.com/nikialeksey/arspell'
     gitUrl = 'https://github.com/nikialeksey/arspell.git'
 
-    libraryVersion = '1.0.0'
+    libraryVersion = '2.0.0'
 
     developerId = 'nikialeksey'
     developerName = 'Alexey Nikitin'
@@ -100,6 +101,11 @@ if (project.rootProject.file('local.properties').exists()) {
                     dependencyNode.appendNode('groupId', 'com.atlascopco')
                     dependencyNode.appendNode('artifactId', 'hunspell-bridj')
                     dependencyNode.appendNode('version', '1.0.4')
+
+                    dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', 'org.languagetool')
+                    dependencyNode.appendNode('artifactId', 'language-all')
+                    dependencyNode.appendNode('version', '4.0')
                 }
             }
         }
