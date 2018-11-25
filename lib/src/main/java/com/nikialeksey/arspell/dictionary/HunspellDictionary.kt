@@ -1,4 +1,4 @@
-package com.nikialeksey.arspell
+package com.nikialeksey.arspell.dictionary
 
 import com.atlascopco.hunspell.Hunspell
 

@@ -1,6 +1,8 @@
-package com.nikialeksey.arspell
+package com.nikialeksey.arspell.dictionary
 
-class SimpleError(
+import com.nikialeksey.arspell.Error
+
+class DictionaryError(
     private val key: String,
     private val word: String,
     private val dictionary: Dictionary

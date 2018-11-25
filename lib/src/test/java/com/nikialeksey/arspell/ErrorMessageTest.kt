@@ -1,6 +1,8 @@
 package com.nikialeksey.arspell
 
 import com.atlascopco.hunspell.Hunspell
+import com.nikialeksey.arspell.checks.HunspellCheck
+import com.nikialeksey.arspell.strings.AndroidStrings
 import org.hamcrest.core.IsEqual
 import org.junit.Assert
 import org.junit.Test

@@ -1,4 +1,4 @@
-package com.nikialeksey.arspell
+package com.nikialeksey.arspell.words
 
 class SimpleWords : Words {
 
@@ -6,13 +6,6 @@ class SimpleWords : Words {
 
     constructor(words: List<Word>) {
         this.words = words
-    }
-
-    constructor(sentences: Sentences) {
-        this.words = mutableListOf()
-        for (sentence in sentences) {
-            this.words += sentence.words()
-        }
     }
 
     override fun iterator(): Iterator<Word> {

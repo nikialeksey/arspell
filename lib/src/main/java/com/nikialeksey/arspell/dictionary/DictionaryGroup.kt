@@ -1,4 +1,4 @@
-package com.nikialeksey.arspell
+package com.nikialeksey.arspell.dictionary
 
 class DictionaryGroup(
     private val dictionaries: List<Dictionary>
