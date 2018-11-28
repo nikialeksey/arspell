@@ -12,7 +12,8 @@ class LanguageToolError(
     }
 
     override fun word(): String {
-        return rule.sentence.text.substring(rule.fromPos, rule.toPos)
+        val text = rule.sentence.text
+        return text.substring(rule.fromPos, Math.min(rule.toPos, text.length - 1))
     }
 
     override fun suggests(): List<String> {

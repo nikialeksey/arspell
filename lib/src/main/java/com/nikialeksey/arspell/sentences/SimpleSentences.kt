@@ -5,6 +5,6 @@ class SimpleSentences(
     private val sentences: String
 ) : Sentences {
     override fun asList(): List<Sentence> {
-        return sentences.split("\\n").map { SimpleSentence(key, it) }
+        return sentences.split("\n").map { SimpleSentence(key, it) }
     }
 }
