@@ -8,6 +8,7 @@ targetCompatibility = 1.8
 dependencies {
     implementation 'com.atlascopco:hunspell-bridj:1.0.4'
     implementation 'org.languagetool:language-all:4.0'
+    implementation 'org.apache.commons:commons-lang3:3.8.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
 }
@@ -106,6 +107,11 @@ if (project.rootProject.file('local.properties').exists()) {
                     dependencyNode.appendNode('groupId', 'org.languagetool')
                     dependencyNode.appendNode('artifactId', 'language-all')
                     dependencyNode.appendNode('version', '4.0')
+
+                    dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', 'org.apache.commons')
+                    dependencyNode.appendNode('artifactId', 'commons-lang3')
+                    dependencyNode.appendNode('version', '3.8.1')
                 }
             }
         }

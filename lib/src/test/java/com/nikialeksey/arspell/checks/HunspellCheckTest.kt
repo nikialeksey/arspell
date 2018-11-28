@@ -1,8 +1,7 @@
-package com.nikialeksey.arspell.check
+package com.nikialeksey.arspell.checks
 
 import com.atlascopco.hunspell.Hunspell
 import com.nikialeksey.arspell.ErrorMessage
-import com.nikialeksey.arspell.checks.HunspellCheck
 import com.nikialeksey.arspell.strings.AndroidStrings
 import com.nikialeksey.arspell.strings.IgnoreKeysStrings
 import com.nikialeksey.arspell.strings.IgnoreWordsStrings

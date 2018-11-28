@@ -12,7 +12,6 @@ class DictionaryCheck(
 
     override fun check(): List<Error> {
         val result = mutableListOf<Error>()
-        strings.asList()[0].sentences().asList()[0].words()
         for (string in strings.asList()) {
             for (sentence in string.sentences().asList()) {
                 for (word in sentence.words()) {

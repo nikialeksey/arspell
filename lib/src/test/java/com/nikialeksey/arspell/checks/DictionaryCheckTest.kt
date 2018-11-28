@@ -1,8 +1,7 @@
-package com.nikialeksey.arspell.check
+package com.nikialeksey.arspell.checks
 
 import com.atlascopco.hunspell.Hunspell
 import com.nikialeksey.arspell.ErrorMessage
-import com.nikialeksey.arspell.checks.DictionaryCheck
 import com.nikialeksey.arspell.dictionary.DictionaryGroup
 import com.nikialeksey.arspell.dictionary.HunspellDictionary
 import com.nikialeksey.arspell.strings.SimpleString
