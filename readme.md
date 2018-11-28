@@ -10,7 +10,7 @@ Android resource spell testing library
 ## How to
 ```gradle
 dependencies {
-    testImplementation('com.nikialeksey:arspell:2.0.0')
+    testImplementation('com.nikialeksey:arspell:2.0.1')
 }
 ```
 
