@@ -4,8 +4,9 @@ import org.apache.commons.lang.StringEscapeUtils
 import java.io.File
 import javax.xml.parsers.DocumentBuilderFactory
 
-class AndroidStrings(private val file: File) : Strings {
-
+class AndroidStrings(
+    private val file: File
+) : Strings {
     override fun asList(): List<String> {
         val fileDocument = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(file)
         val fileNodes = fileDocument.documentElement.childNodes

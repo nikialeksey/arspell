@@ -5,6 +5,7 @@ import com.nikialeksey.arspell.Error
 import com.nikialeksey.arspell.dictionary.HunspellDictionary
 import com.nikialeksey.arspell.strings.Strings
 
+@Deprecated("Use DictionaryCheck instead", level = DeprecationLevel.WARNING)
 class HunspellCheck(
     private val origin: SpellCheck
 ) : SpellCheck {
@@ -13,7 +14,8 @@ class HunspellCheck(
         DictionaryCheck(
             HunspellDictionary(
                 hunspell
-            ), strings
+            ),
+            strings
         )
     )
 
