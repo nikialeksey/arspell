@@ -38,4 +38,22 @@ class DictionaryCheckTest {
         ).check()
         Assert.assertTrue(ErrorMessage(errors).asString(), errors.isEmpty())
     }
+
+    @Test
+    fun percentInText() {
+        val errors = DictionaryCheck(
+            HunspellDictionary(
+                Hunspell(
+                    "./src/test/assets/percents/index.dic",
+                    "./src/test/assets/percents/index.aff"
+                )
+            ),
+            SimpleStrings(
+                listOf(
+                    SimpleString("percent", "10%")
+                )
+            )
+        ).check()
+        Assert.assertTrue(ErrorMessage(errors).asString(), errors.isEmpty())
+    }
 }

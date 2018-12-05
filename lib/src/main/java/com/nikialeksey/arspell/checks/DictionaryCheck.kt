@@ -15,9 +15,8 @@ class DictionaryCheck(
         for (string in strings.asList()) {
             for (sentence in string.sentences().asList()) {
                 for (word in sentence.words()) {
-                    val asString = word.asString()
-                    if (!dictionary.isCorrect(asString)) {
-                        result.add(DictionaryError(word.key(), asString, dictionary))
+                    if (!dictionary.isCorrect(word)) {
+                        result.add(DictionaryError(word, dictionary))
                     }
                 }
             }
