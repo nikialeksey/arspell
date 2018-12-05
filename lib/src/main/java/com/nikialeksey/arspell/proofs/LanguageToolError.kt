@@ -1,4 +1,4 @@
-package com.nikialeksey.arspell.checks
+package com.nikialeksey.arspell.proofs
 
 import com.nikialeksey.arspell.Error
 import org.languagetool.rules.RuleMatch
