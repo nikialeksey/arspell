@@ -1,10 +1,8 @@
-package com.nikialeksey.arspell.checks
+package com.nikialeksey.arspell
 
-import com.nikialeksey.arspell.Error
-
-class GroupSpellCheck(
-    private val checks: List<SpellCheck>
-) : SpellCheck {
+class GroupSpell(
+    private val checks: List<Arspell>
+) : Arspell {
     override fun check(): List<Error> {
         val result = mutableListOf<Error>()
         for (check in checks) {

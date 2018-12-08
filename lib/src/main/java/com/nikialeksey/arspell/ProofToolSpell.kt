@@ -1,13 +1,12 @@
-package com.nikialeksey.arspell.checks
+package com.nikialeksey.arspell
 
-import com.nikialeksey.arspell.Error
 import com.nikialeksey.arspell.proofs.ProofTool
 import com.nikialeksey.arspell.strings.Strings
 
-class ProofToolCheck(
+class ProofToolSpell(
     private val proofTool: ProofTool,
     private val strings: Strings
-) : SpellCheck {
+) : Arspell {
     override fun check(): List<Error> {
         val errors = mutableListOf<Error>()
 

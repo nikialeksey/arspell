@@ -3,6 +3,7 @@ package com.nikialeksey.arspell.proofs
 import com.nikialeksey.arspell.Error
 import com.nikialeksey.arspell.strings.String
 import org.languagetool.JLanguageTool
+import org.languagetool.rules.spelling.morfologik.MorfologikSpellerRule
 
 class LanguageToolProof(
     private val languageTool: JLanguageTool
@@ -15,5 +16,12 @@ class LanguageToolProof(
                 it
             )
         }
+    }
+
+    override fun addIgnored(tokens: List<kotlin.String>) {
+        val rule = languageTool.allActiveRules.find {
+            it is MorfologikSpellerRule
+        } as MorfologikSpellerRule?
+        rule?.addIgnoreTokens(tokens)
     }
 }

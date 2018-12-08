@@ -1,7 +1,6 @@
-package com.nikialeksey.arspell.checks
+package com.nikialeksey.arspell
 
 import com.atlascopco.hunspell.Hunspell
-import com.nikialeksey.arspell.ErrorMessage
 import com.nikialeksey.arspell.dictionary.DictionaryGroup
 import com.nikialeksey.arspell.dictionary.HunspellDictionary
 import com.nikialeksey.arspell.proofs.LanguageToolProof
@@ -12,7 +11,7 @@ import org.junit.Test
 import org.languagetool.JLanguageTool
 import org.languagetool.language.BritishEnglish
 
-class GroupSpellCheckTest {
+class GroupSpellTest {
     @Test
     fun twoChecks() {
         val strings = SimpleStrings(
@@ -21,9 +20,9 @@ class GroupSpellCheckTest {
                 SimpleString("2", "Sunday")
             )
         )
-        val errors = GroupSpellCheck(
+        val errors = GroupSpell(
             listOf(
-                DictionaryCheck(
+                DictionarySpell(
                     DictionaryGroup(
                         listOf(
                             HunspellDictionary(
@@ -36,7 +35,7 @@ class GroupSpellCheckTest {
                     ),
                     strings
                 ),
-                ProofToolCheck(
+                ProofToolSpell(
                     LanguageToolProof(
                         JLanguageTool(BritishEnglish())
                     ),

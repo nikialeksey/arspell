@@ -1,7 +1,7 @@
 package com.nikialeksey.arspell.strings
 
 import com.nikialeksey.arspell.ErrorMessage
-import com.nikialeksey.arspell.checks.ProofToolCheck
+import com.nikialeksey.arspell.ProofToolSpell
 import com.nikialeksey.arspell.proofs.LanguageToolProof
 import org.junit.Assert
 import org.junit.Test
@@ -10,8 +10,8 @@ import org.languagetool.language.BritishEnglish
 
 class MdStringsTest {
     @Test
-    fun asd() {
-        val errors = ProofToolCheck(
+    fun simpleCheckMdString() {
+        val errors = ProofToolSpell(
             LanguageToolProof(
                 JLanguageTool(
                     BritishEnglish()
