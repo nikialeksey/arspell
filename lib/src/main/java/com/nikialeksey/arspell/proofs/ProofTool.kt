@@ -5,4 +5,5 @@ import com.nikialeksey.arspell.strings.String
 
 interface ProofTool {
     fun check(string: String): List<Error>
+    fun addIgnored(tokens: List<kotlin.String>)
 }

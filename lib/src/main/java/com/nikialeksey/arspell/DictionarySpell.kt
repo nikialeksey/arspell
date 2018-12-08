@@ -1,14 +1,13 @@
-package com.nikialeksey.arspell.checks
+package com.nikialeksey.arspell
 
-import com.nikialeksey.arspell.Error
 import com.nikialeksey.arspell.dictionary.DictionaryError
 import com.nikialeksey.arspell.dictionary.Dictionary
 import com.nikialeksey.arspell.strings.Strings
 
-class DictionaryCheck(
+class DictionarySpell(
     private val dictionary: Dictionary,
     private val strings: Strings
-) : SpellCheck {
+) : Arspell {
 
     override fun check(): List<Error> {
         val result = mutableListOf<Error>()

@@ -1,18 +1,19 @@
-package com.nikialeksey.arspell.checks
+package com.nikialeksey.arspell.dictionary
 
 import com.atlascopco.hunspell.Hunspell
+import com.nikialeksey.arspell.DictionarySpell
 import com.nikialeksey.arspell.ErrorMessage
-import com.nikialeksey.arspell.dictionary.DictionaryGroup
-import com.nikialeksey.arspell.dictionary.HunspellDictionary
 import com.nikialeksey.arspell.strings.SimpleString
 import com.nikialeksey.arspell.strings.SimpleStrings
+import com.nikialeksey.arspell.words.SimpleWord
+import org.hamcrest.core.IsCollectionContaining
 import org.junit.Assert
 import org.junit.Test
 
-class DictionaryCheckTest {
+class DictionaryGroupTest {
     @Test
     fun twoLanguage() {
-        val errors = DictionaryCheck(
+        val errors = DictionarySpell(
             DictionaryGroup(
                 listOf(
                     HunspellDictionary(
@@ -40,20 +41,23 @@ class DictionaryCheckTest {
     }
 
     @Test
-    fun percentInText() {
-        val errors = DictionaryCheck(
-            HunspellDictionary(
-                Hunspell(
-                    "./src/test/assets/percents/index.dic",
-                    "./src/test/assets/percents/index.aff"
-                )
-            ),
-            SimpleStrings(
-                listOf(
-                    SimpleString("percent", "10%")
+    fun suggestFromFewDictionaries() {
+        val dictionary = DictionaryGroup(
+            listOf(
+                HunspellDictionary(
+                    Hunspell(
+                        "./src/test/assets/en_US/index.dic",
+                        "./src/test/assets/en_US/index.aff"
+                    )
+                ),
+                HunspellDictionary(
+                    Hunspell(
+                        "./src/test/assets/ru/index.dic",
+                        "./src/test/assets/ru/index.aff"
+                    )
                 )
             )
-        ).check()
-        Assert.assertTrue(ErrorMessage(errors).asString(), errors.isEmpty())
+        )
+        Assert.assertThat(dictionary.suggest(SimpleWord("key", "woord")), IsCollectionContaining.hasItem("word"))
     }
 }
