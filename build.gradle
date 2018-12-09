@@ -16,6 +16,29 @@ allprojects {
     repositories {
         jcenter()
     }
+
+    ext {
+        // Specify bintrayName, artifact, libraryName in modules
+        // bintrayName = ...
+        // artifact = ...
+        // libraryName = ...
+        libraryDescription = 'Resource spell testing library'
+
+        bintrayRepo = 'android'
+        publishedGroupId = 'com.nikialeksey'
+
+        siteUrl = 'https://github.com/nikialeksey/arspell'
+        gitUrl = 'https://github.com/nikialeksey/arspell.git'
+
+        libraryVersion = '3.0.0'
+
+        developerId = 'nikialeksey'
+        developerName = 'Alexey Nikitin'
+        developerEmail = 'nikialeksey@gmail.com'
+        licenseName = 'MIT License'
+        licenseUrl = 'https://github.com/nikialeksey/arspell/blob/master/LICENSE'
+        allLicenses = ['MIT']
+    }
 }
 
 subprojects {

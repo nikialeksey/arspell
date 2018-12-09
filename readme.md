@@ -10,7 +10,9 @@ Android resource spell testing library
 ## How to
 ```gradle
 dependencies {
-    testImplementation('com.nikialeksey:arspell:2.0.2')
+    testImplementation('com.nikialeksey:arspell:3.0.0')
+    testImplementation('com.nikialeksey:arspell-hunspell:3.0.0')
+    testImplementation('com.nikialeksey:arspell-android:3.0.0')
 }
 ```
 
@@ -18,10 +20,12 @@ dependencies {
 class ResourcesTest {
     @Test
     fun enSpell() {
-        val errors = HunspellCheck(
-            Hunspell(
-                "./src/test/assets/en_US/index.dic",
-                "./src/test/assets/en_US/index.aff"
+        val errors = DictionarySpell(
+            HunspellDictionary(
+                Hunspell(
+                    "./src/test/assets/en_US/index.dic",
+                    "./src/test/assets/en_US/index.aff"
+                )
             ),
             AndroidStrings(File("./src/main/res/values-en/strings.xml"))
         ).check()
@@ -35,10 +39,12 @@ class ResourcesTest {
 class ResourcesTest {
     @Test
     fun enSpell() {
-        val errors = HunspellCheck(
-            Hunspell(
-                "./src/test/assets/en_US/index.dic",
-                "./src/test/assets/en_US/index.aff"
+        val errors = DictionarySpell(
+            HunspellDictionary(
+                Hunspell(
+                    "./src/test/assets/en_US/index.dic",
+                    "./src/test/assets/en_US/index.aff"
+                )
             ),
             IgnoreValuesStrings(
                 IgnoreKeysStrings(
@@ -58,8 +64,8 @@ class ResourcesTest {
 class ResourcesTest {
     @Test
     fun ruEnSpell() {
-        val errors = SimpleCheck(
-            DictionaryGroup(
+        val errors = DictionarySpell(
+            GroupSpell(
                 listOf(
                     HunspellDictionary(
                         Hunspell(

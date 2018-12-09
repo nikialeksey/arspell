@@ -1,0 +1,96 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+apply plugin: 'jacoco'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    implementation project(':arspell')
+    implementation 'com.vladsch.flexmark:flexmark:0.34.58'
+    implementation 'com.vladsch.flexmark:flexmark-profile-pegdown:0.34.58'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    testImplementation 'junit:junit:4.12'
+    testImplementation project(':arspell-langtool')
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = false
+    }
+}
+
+check.dependsOn jacocoTestReport
+
+ext {
+    bintrayName = 'arspell-md'
+    artifact = 'arspell-md'
+    libraryName = 'arspell-md'
+}
+if (project.rootProject.file('local.properties').exists()) {
+    apply plugin: 'maven'
+    group = publishedGroupId
+    install {
+        repositories.mavenInstaller {
+            pom.project {
+                packaging 'jar'
+                groupId publishedGroupId
+                artifactId artifact
+
+                name libraryName
+                description libraryDescription
+                url siteUrl
+
+                licenses {
+                    license {
+                        name licenseName
+                        url licenseUrl
+                    }
+                }
+                developers {
+                    developer {
+                        id developerId
+                        name developerName
+                        email developerEmail
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+
+    apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+    apply plugin: 'maven-publish'
+    publishing {
+        publications {
+            arspell_md(MavenPublication) {
+                artifact(sourcesJar)
+                artifact("$buildDir/libs/arspell-md-${libraryVersion}.jar")
+
+                groupId publishedGroupId
+                artifactId artifact
+                version libraryVersion
+
+                pom.withXml {
+                    def dependenciesNode = asNode().appendNode('dependencies')
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', 'com.vladsch.flexmark')
+                    dependencyNode.appendNode('artifactId', 'flexmark')
+                    dependencyNode.appendNode('version', '0.34.58')
+
+                    dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', 'com.vladsch.flexmark')
+                    dependencyNode.appendNode('artifactId', 'flexmark-profile-pegdown')
+                    dependencyNode.appendNode('version', '0.34.58')
+                }
+            }
+        }
+    }
+    bintray.publications = ['arspell_md']
+    bintray.configurations = []
+}

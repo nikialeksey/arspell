@@ -1,1 +1,5 @@
-include ':lib'
+include ':arspell'
+include ':arspell-hunspell'
+include ':arspell-langtool'
+include ':arspell-android'
+include ':arspell-md'
