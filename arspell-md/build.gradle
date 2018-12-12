@@ -7,8 +7,8 @@ targetCompatibility = 1.8
 
 dependencies {
     implementation project(':arspell')
-    implementation 'com.vladsch.flexmark:flexmark:0.34.58'
-    implementation 'com.vladsch.flexmark:flexmark-profile-pegdown:0.34.58'
+    implementation 'com.vladsch.flexmark:flexmark:0.35.0'
+    implementation 'com.vladsch.flexmark:flexmark-profile-pegdown:0.35.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
     testImplementation project(':arspell-langtool')
@@ -81,12 +81,12 @@ if (project.rootProject.file('local.properties').exists()) {
                     def dependencyNode = dependenciesNode.appendNode('dependency')
                     dependencyNode.appendNode('groupId', 'com.vladsch.flexmark')
                     dependencyNode.appendNode('artifactId', 'flexmark')
-                    dependencyNode.appendNode('version', '0.34.58')
+                    dependencyNode.appendNode('version', '0.35.0')
 
                     dependencyNode = dependenciesNode.appendNode('dependency')
                     dependencyNode.appendNode('groupId', 'com.vladsch.flexmark')
                     dependencyNode.appendNode('artifactId', 'flexmark-profile-pegdown')
-                    dependencyNode.appendNode('version', '0.34.58')
+                    dependencyNode.appendNode('version', '0.35.0')
                 }
             }
         }

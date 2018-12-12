@@ -22,7 +22,7 @@ allprojects {
         // bintrayName = ...
         // artifact = ...
         // libraryName = ...
-        libraryDescription = 'Resource spell testing library'
+        libraryDescription = 'Resources spell testing library'
 
         bintrayRepo = 'android'
         publishedGroupId = 'com.nikialeksey'
@@ -30,7 +30,7 @@ allprojects {
         siteUrl = 'https://github.com/nikialeksey/arspell'
         gitUrl = 'https://github.com/nikialeksey/arspell.git'
 
-        libraryVersion = '3.0.0'
+        libraryVersion = '3.0.1'
 
         developerId = 'nikialeksey'
         developerName = 'Alexey Nikitin'

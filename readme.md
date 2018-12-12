@@ -10,9 +10,9 @@ Android resource spell testing library
 ## How to
 ```gradle
 dependencies {
-    testImplementation('com.nikialeksey:arspell:3.0.0')
-    testImplementation('com.nikialeksey:arspell-hunspell:3.0.0')
-    testImplementation('com.nikialeksey:arspell-android:3.0.0')
+    testImplementation('com.nikialeksey:arspell:3.0.1')
+    testImplementation('com.nikialeksey:arspell-hunspell:3.0.1')
+    testImplementation('com.nikialeksey:arspell-android:3.0.1')
 }
 ```
 
