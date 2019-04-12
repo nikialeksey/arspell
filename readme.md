@@ -5,14 +5,14 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/nikialeksey/arspell/blob/master/LICENSE)
 [![Download](https://api.bintray.com/packages/nikialeksey/android/arspell/images/download.svg)](https://bintray.com/nikialeksey/android/arspell/_latestVersion)
 
-Android resource spell testing library
+Resource spell testing library
 
 ## How to
 ```gradle
 dependencies {
-    testImplementation('com.nikialeksey:arspell:3.0.1')
-    testImplementation('com.nikialeksey:arspell-hunspell:3.0.1')
-    testImplementation('com.nikialeksey:arspell-android:3.0.1')
+    testImplementation 'com.nikialeksey:arspell:3.0.2'
+    testImplementation 'com.nikialeksey:arspell-hunspell:3.0.2'
+    testImplementation 'com.nikialeksey:arspell-android:3.0.2'
 }
 ```
 

@@ -11,7 +11,7 @@ dependencies {
     implementation 'com.vladsch.flexmark:flexmark-profile-pegdown:0.35.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     testImplementation 'junit:junit:4.12'
-    testImplementation project(':arspell-langtool')
+    testImplementation project(':arspell-hunspell')
 }
 
 jacocoTestReport {
