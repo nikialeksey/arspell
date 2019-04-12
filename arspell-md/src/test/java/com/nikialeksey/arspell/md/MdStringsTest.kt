@@ -1,22 +1,22 @@
 package com.nikialeksey.arspell.md
 
+import com.atlascopco.hunspell.Hunspell
 import com.nikialeksey.arpsell.md.MdStrings
+import com.nikialeksey.arspell.DictionarySpell
 import com.nikialeksey.arspell.ErrorMessage
-import com.nikialeksey.arspell.ProofToolSpell
-import com.nikialeksey.arspell.langtool.LanguageToolProof
+import com.nikialeksey.arspell.hunspell.HunspellDictionary
 import org.junit.Assert
 import org.junit.Test
-import org.languagetool.JLanguageTool
-import org.languagetool.language.BritishEnglish
 import java.io.File
 
 class MdStringsTest {
     @Test
     fun simpleCheckMdString() {
-        val errors = ProofToolSpell(
-            LanguageToolProof(
-                JLanguageTool(
-                    BritishEnglish()
+        val errors = DictionarySpell(
+            HunspellDictionary(
+                Hunspell(
+                    "./src/test/assets/en_US/index.dic",
+                    "./src/test/assets/en_US/index.aff"
                 )
             ),
             MdStrings("key", "### Hello world")
@@ -26,13 +26,28 @@ class MdStringsTest {
 
     @Test
     fun checkMdFile() {
-        val errors = ProofToolSpell(
-            LanguageToolProof(
-                JLanguageTool(
-                    BritishEnglish()
+        val errors = DictionarySpell(
+            HunspellDictionary(
+                Hunspell(
+                    "./src/test/assets/en_US/index.dic",
+                    "./src/test/assets/en_US/index.aff"
                 )
             ),
             MdStrings(File("./src/test/assets/sample.md"))
+        ).check()
+        Assert.assertTrue(ErrorMessage(errors).asString(), errors.isEmpty())
+    }
+
+    @Test
+    fun checkReadMe() {
+        val errors = DictionarySpell(
+            HunspellDictionary(
+                Hunspell(
+                    "./src/test/assets/en_US/index.dic",
+                    "./src/test/assets/en_US/index.aff"
+                )
+            ),
+            MdStrings(File("../readme.md"))
         ).check()
         Assert.assertTrue(ErrorMessage(errors).asString(), errors.isEmpty())
     }

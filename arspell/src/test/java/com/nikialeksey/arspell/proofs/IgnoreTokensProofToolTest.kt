@@ -7,9 +7,10 @@ import org.junit.Test
 
 class IgnoreTokensProofToolTest {
     @Test
-    fun asd() {
+    fun ignoreTokens() {
         val proofTool = IgnoreTokensProofTool(
-            ProofTool.Fake(setOf("one", "two")), listOf("asd")
+            origin = ProofTool.Fake(setOf("one", "two")),
+            tokens = listOf("asd")
         )
         proofTool.addIgnored(listOf("dsa"))
         Assert.assertThat(
