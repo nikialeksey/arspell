@@ -37,7 +37,7 @@ if (project.rootProject.file('local.properties').exists()) {
         repositories {
             maven {
                 name = 'central'
-                url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+                url = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
                 credentials {
                     username properties.getProperty("sonatype.user")
                     password properties.getProperty("sonatype.pass")
@@ -91,7 +91,7 @@ if (project.rootProject.file('local.properties').exists()) {
     }
 
     nexusStaging {
-        serverUrl = "https://s01.oss.sonatype.org/service/local/"
+        serverUrl = "https://oss.sonatype.org/service/local/"
         username = properties.getProperty("sonatype.user")
         password = properties.getProperty("sonatype.pass")
         packageGroup = publishedGroupId
