@@ -1,7 +1,7 @@
 buildscript {
-    ext.kotlin_version = '1.3.0'
+    ext.kotlin_version = '1.5.31'
     repositories {
-        jcenter()
+        mavenCentral()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
@@ -9,28 +9,22 @@ buildscript {
 }
 
 plugins {
-    id 'com.jfrog.bintray' version '1.7.3'
+    id 'io.codearte.nexus-staging' version '0.30.0'
 }
 
 allprojects {
     repositories {
-        jcenter()
+        mavenCentral()
     }
 
     ext {
-        // Specify bintrayName, artifact, libraryName in modules
-        // bintrayName = ...
-        // artifact = ...
-        // libraryName = ...
         libraryDescription = 'Resources spell testing library'
-
-        bintrayRepo = 'android'
         publishedGroupId = 'com.nikialeksey'
 
         siteUrl = 'https://github.com/nikialeksey/arspell'
         gitUrl = 'https://github.com/nikialeksey/arspell.git'
 
-        libraryVersion = '3.0.2'
+        libraryVersion = '3.1.0'
 
         developerId = 'nikialeksey'
         developerName = 'Alexey Nikitin'
@@ -39,8 +33,4 @@ allprojects {
         licenseUrl = 'https://github.com/nikialeksey/arspell/blob/master/LICENSE'
         allLicenses = ['MIT']
     }
-}
-
-subprojects {
-    tasks.withType(Javadoc).all { enabled = false }
 }

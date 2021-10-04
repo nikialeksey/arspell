@@ -1,6 +1,6 @@
 # Arspell
 
-[![Build Status](https://travis-ci.org/nikialeksey/arspell.svg?branch=master)](https://travis-ci.org/nikialeksey/arspell)
+[![Build Status](https://github.com/nikialeksey/arspell/actions/workflows/ci.yml/badge.svg)](https://github.com/nikialeksey/arspell/actions/)
 [![codecov](https://codecov.io/gh/nikialeksey/arspell/branch/master/graph/badge.svg)](https://codecov.io/gh/nikialeksey/arspell)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/nikialeksey/arspell/blob/master/LICENSE)
 [![Download](https://api.bintray.com/packages/nikialeksey/android/arspell/images/download.svg)](https://bintray.com/nikialeksey/android/arspell/_latestVersion)
@@ -10,9 +10,9 @@ Resource spell testing library
 ## How to
 ```gradle
 dependencies {
-    testImplementation 'com.nikialeksey:arspell:3.0.2'
-    testImplementation 'com.nikialeksey:arspell-hunspell:3.0.2'
-    testImplementation 'com.nikialeksey:arspell-android:3.0.2'
+    testImplementation 'com.nikialeksey:arspell:3.1.0'
+    testImplementation 'com.nikialeksey:arspell-hunspell:3.1.0'
+    testImplementation 'com.nikialeksey:arspell-android:3.1.0'
 }
 ```
 
@@ -98,6 +98,9 @@ class ResourcesTest {
 
 ## Publish
 ```bash
-gradlew install
-gradlew bintrayUpload
+gradlew build sign publish closeAndReleaseRepository
 ```
+
+## Changelog
+
+- `3.1.0` - migrate to maven central
