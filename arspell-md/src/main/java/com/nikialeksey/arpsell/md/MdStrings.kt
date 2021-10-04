@@ -4,10 +4,10 @@ import com.nikialeksey.arspell.strings.SimpleString
 import com.nikialeksey.arspell.strings.String
 import com.nikialeksey.arspell.strings.Strings
 import com.vladsch.flexmark.ast.FencedCodeBlock
-import com.vladsch.flexmark.ast.util.TextCollectingVisitor
 import com.vladsch.flexmark.parser.Parser
-import com.vladsch.flexmark.profiles.pegdown.Extensions
-import com.vladsch.flexmark.profiles.pegdown.PegdownOptionsAdapter
+import com.vladsch.flexmark.profile.pegdown.Extensions
+import com.vladsch.flexmark.profile.pegdown.PegdownOptionsAdapter
+import com.vladsch.flexmark.util.ast.TextCollectingVisitor
 import org.cactoos.Text
 import org.cactoos.text.TextOf
 import java.io.File

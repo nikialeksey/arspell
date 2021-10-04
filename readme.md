@@ -2,8 +2,9 @@
 
 [![Build Status](https://github.com/nikialeksey/arspell/actions/workflows/ci.yml/badge.svg)](https://github.com/nikialeksey/arspell/actions/)
 [![codecov](https://codecov.io/gh/nikialeksey/arspell/branch/master/graph/badge.svg)](https://codecov.io/gh/nikialeksey/arspell)
+
+[![Lib version](https://img.shields.io/maven-central/v/com.nikialeksey/arspell.svg?label=lib)](https://maven-badges.herokuapp.com/maven-central/com.nikialeksey/arspell)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/nikialeksey/arspell/blob/master/LICENSE)
-[![Download](https://api.bintray.com/packages/nikialeksey/android/arspell/images/download.svg)](https://bintray.com/nikialeksey/android/arspell/_latestVersion)
 
 Resource spell testing library
 
@@ -98,9 +99,11 @@ class ResourcesTest {
 
 ## Publish
 ```bash
-gradlew build sign publish closeAndReleaseRepository
+gradlew build publish closeAndReleaseRepository
 ```
 
 ## Changelog
+
+- `3.1.1` - upgrade dependencies
 
 - `3.1.0` - migrate to maven central
