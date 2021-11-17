@@ -1,7 +1,13 @@
 package com.nikialeksey.arspell
 
-import com.nikialeksey.arspell.Error
-
 interface Arspell {
     fun check(): List<Error>
+
+    class Fake(
+        private val errors: List<Error>
+    ) : Arspell {
+        override fun check(): List<Error> {
+            return errors
+        }
+    }
 }

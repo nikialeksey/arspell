@@ -1,0 +1,19 @@
+plugins {
+    id("com.nikialeksey.arspell")
+}
+
+arspell {
+    md(file("./readme.md")) {
+        dictionary {
+            en()
+            ru()
+        }
+        ignoreWords(["миииир"])
+    }
+    android(file("./strings.xml")) {
+        dictionary {
+            en()
+        }
+        ignoreKeys(["hello_world_bad"])
+    }
+}

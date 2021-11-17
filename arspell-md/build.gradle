@@ -2,15 +2,17 @@ apply plugin: 'java-library'
 apply plugin: 'kotlin'
 apply from: '../gradle/jacoco.gradle'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+java {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
 
 dependencies {
     implementation project(':arspell')
     implementation 'com.vladsch.flexmark:flexmark:0.61.24'
     implementation 'com.vladsch.flexmark:flexmark-profile-pegdown:0.61.24'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    testImplementation 'junit:junit:4.12'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    testImplementation 'junit:junit:4.13.2'
     testImplementation project(':arspell-hunspell')
 }
 
@@ -82,7 +84,7 @@ if (project.rootProject.file('local.properties').exists()) {
     }
 
     def signingKeyId = properties.getProperty("signingKeyId")
-    def signingKey = new File(properties.getProperty("signingKey")).text
+    def signingKey = project.rootProject.file(properties.getProperty("signingKey")).text
     def signingPassword = properties.getProperty("signingPassword")
     signing {
         useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)

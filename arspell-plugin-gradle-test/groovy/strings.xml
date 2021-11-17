@@ -1,0 +1,4 @@
+<resources>
+    <string name="hello_world">Hello, world!</string>
+    <string name="hello_world_bad">Hello, worllld!</string>
+</resources>
