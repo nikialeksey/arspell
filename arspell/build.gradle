@@ -2,12 +2,14 @@ apply plugin: 'java-library'
 apply plugin: 'kotlin'
 apply from: '../gradle/jacoco.gradle'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+java {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
 
 dependencies {
     api 'org.cactoos:cactoos:0.38'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     testImplementation 'junit:junit:4.12'
     testImplementation project(':arspell-langtool')
@@ -83,7 +85,7 @@ if (project.rootProject.file('local.properties').exists()) {
     }
 
     def signingKeyId = properties.getProperty("signingKeyId")
-    def signingKey = new File(properties.getProperty("signingKey")).text
+    def signingKey = project.rootProject.file(properties.getProperty("signingKey")).text
     def signingPassword = properties.getProperty("signingPassword")
     signing {
         useInMemoryPgpKeys(signingKeyId, signingKey, signingPassword)

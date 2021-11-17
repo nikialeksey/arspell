@@ -6,94 +6,51 @@
 [![Lib version](https://img.shields.io/maven-central/v/com.nikialeksey/arspell.svg?label=lib)](https://maven-badges.herokuapp.com/maven-central/com.nikialeksey/arspell)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/nikialeksey/arspell/blob/master/LICENSE)
 
-Resource spell testing library
+Resources spell testing library and gradle plugin.
 
 ## How to
-```gradle
-dependencies {
-    testImplementation 'com.nikialeksey:arspell:3.1.0'
-    testImplementation 'com.nikialeksey:arspell-hunspell:3.1.0'
-    testImplementation 'com.nikialeksey:arspell-android:3.1.0'
-}
-```
 
-```kotlin
-class ResourcesTest {
-    @Test
-    fun enSpell() {
-        val errors = DictionarySpell(
-            HunspellDictionary(
-                Hunspell(
-                    "./src/test/assets/en_US/index.dic",
-                    "./src/test/assets/en_US/index.aff"
-                )
-            ),
-            AndroidStrings(File("./src/main/res/values-en/strings.xml"))
-        ).check()
-        Assert.assertTrue(ErrorMessage(errors).asString(), errors.isEmpty())
+For example, you have two files:
+
+`readme.md`:
+```text
+Hello world!
+Привет, миииир!
+```
+`strings.xml`:
+```xml
+<resources>
+  <string name="hello_world">Hello, world!</string>  
+  <string name="hello_world_bad">Hello, worllld!</string>
+</resources>
+```
+To check it, you should define plugin and configure it:
+```groovy
+plugins {
+    id("com.nikialeksey.arspell").version("<latest>")
+}
+
+arspell {
+    md(file("./readme.md")) {
+        dictionary {
+            en()
+            ru()
+        }
+        ignoreWords(["миииир"])
+    }
+    android(file("./strings.xml")) {
+        dictionary {
+            en()
+        }
+        ignoreKeys(["hello_world_bad"])
     }
 }
 ```
 
-## Ignoring words and keys
-```kotlin
-class ResourcesTest {
-    @Test
-    fun enSpell() {
-        val errors = DictionarySpell(
-            HunspellDictionary(
-                Hunspell(
-                    "./src/test/assets/en_US/index.dic",
-                    "./src/test/assets/en_US/index.aff"
-                )
-            ),
-            IgnoreValuesStrings(
-                IgnoreKeysStrings(
-                    AndroidStrings(File("./src/test/res/values/dictionary.xml")),
-                    setOf("ignored")
-                ),
-                setOf("QWE")
-            )
-        ).check()
-        Assert.assertTrue(ErrorMessage(errors).asString(), errors.isEmpty())
-    }
-}
+Then run it as gradle task:
+```shell
+./gradlew arspell
 ```
-
-## Checking every word in multiple dictionaries
-```kotlin
-class ResourcesTest {
-    @Test
-    fun ruEnSpell() {
-        val errors = DictionarySpell(
-            GroupSpell(
-                listOf(
-                    HunspellDictionary(
-                        Hunspell(
-                            "./src/test/assets/en_US/index.dic",
-                            "./src/test/assets/en_US/index.aff"
-                        )
-                    ),
-                    HunspellDictionary(
-                        Hunspell(
-                            "./src/test/assets/ru/index.dic",
-                            "./src/test/assets/ru/index.aff"
-                        )
-                    )
-                )
-            ),
-            AndroidStrings(File("./src/test/res/values/dictionary.xml"))
-        ).check()
-        Assert.assertTrue(ErrorMessage(errors).asString(), errors.isEmpty())
-    }
-}
-```
-
-## Hunspell dictionaries
-
-[Dictionaries](https://github.com/wooorm/dictionaries)
-
-[Hunspell man](https://www.systutorials.com/docs/linux/man/4-hunspell/) for adding new words in any dictionary.
 
 ## @todo #10:30m Write docs about language tool using
 

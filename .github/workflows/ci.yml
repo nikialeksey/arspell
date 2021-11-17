@@ -19,5 +19,11 @@ jobs:
           distribution: 'adopt'
       - name: Build with Gradle
         run: ./gradlew check
+      - name: Check arspell plugin usage with groovy
+        working-directory: ./arspell-plugin-gradle-test/groovy/
+        run: ./gradlew arspell
+      - name: Check arspell plugin usage with kts
+        working-directory: ./arspell-plugin-gradle-test/kts/
+        run: ./gradlew arspell
       - name: Upload coverage to Codecov
         run: bash <(curl -s https://codecov.io/bash)
