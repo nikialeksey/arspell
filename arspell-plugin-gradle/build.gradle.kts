@@ -14,7 +14,7 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
-val projectVersion: String by extra("libraryVersion")
+val projectVersion = ext.get("libraryVersion") as String
 group = "com.nikialeksey"
 version = projectVersion
 
