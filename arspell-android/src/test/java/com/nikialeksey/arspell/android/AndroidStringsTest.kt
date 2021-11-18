@@ -10,6 +10,6 @@ class AndroidStringsTest {
     fun dictionaryTest() {
         val strings = AndroidStrings(File("./src/test/res/values/dictionary.xml")).asList()
         Assert.assertThat(strings.size, IsEqual.equalTo(1))
-        Assert.assertThat(strings[0].asString(), IsEqual.equalTo("Android resources spell\ntesting library"))
+        Assert.assertThat(strings[0].asString(), IsEqual.equalTo("Android resources spell\ntesting library "))
     }
 }

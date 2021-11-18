@@ -61,6 +61,8 @@ gradlew build publish closeAndReleaseRepository
 ```
 
 ## Changelog
+- `3.1.2` - small fixes for Android strings (skip format specifiers, skip 
+references in string resources)
 
 - `3.1.1` - upgrade dependencies
 

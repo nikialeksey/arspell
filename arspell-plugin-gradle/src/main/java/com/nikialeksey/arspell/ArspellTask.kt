@@ -16,7 +16,7 @@ open class ArspellTask : DefaultTask() {
         if (errors.isNotEmpty()) {
             val message = ErrorMessage(errors).asString()
             logger.error(message)
-            throw GradleException("Spell checks failed!")
+            throw GradleException("Spell checks failed! Found ${errors.size} issues.")
         }
     }
 }

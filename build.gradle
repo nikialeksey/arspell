@@ -24,7 +24,7 @@ allprojects {
         siteUrl = 'https://github.com/nikialeksey/arspell'
         gitUrl = 'https://github.com/nikialeksey/arspell.git'
 
-        libraryVersion = '3.1.1'
+        libraryVersion = '3.1.2'
 
         developerId = 'nikialeksey'
         developerName = 'Alexey Nikitin'

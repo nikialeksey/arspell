@@ -10,7 +10,7 @@ import java.util.*
 class SimpleSentence(
     private val key: String,
     private val sentence: String,
-    private val delim: String = " .,!?:-()_\\\"/…"
+    private val delim: String = " .,!?:-()_\\\"/…\u00A0"
 ) : Sentence {
     override fun key(): String {
         return key
