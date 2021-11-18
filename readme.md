@@ -1,10 +1,11 @@
 # Arspell
 
-[![Build Status](https://github.com/nikialeksey/arspell/actions/workflows/ci.yml/badge.svg)](https://github.com/nikialeksey/arspell/actions/)
-[![codecov](https://codecov.io/gh/nikialeksey/arspell/branch/master/graph/badge.svg)](https://codecov.io/gh/nikialeksey/arspell)
+[![Build Status][build-status-badge]][build-status-link]
+[![codecov][codecov-badge]][codecov-link]
 
-[![Lib version](https://img.shields.io/maven-central/v/com.nikialeksey/arspell.svg?label=lib)](https://maven-badges.herokuapp.com/maven-central/com.nikialeksey/arspell)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/nikialeksey/arspell/blob/master/LICENSE)
+[![Lib version][lib-version-badge]][lib-version-link]
+[![Gradle plugin version][gradle-plugin-badge]][gradle-plugin-link]
+[![License: MIT][license-badge]][license-link]
 
 Resources spell testing library and gradle plugin.
 
@@ -64,3 +65,14 @@ gradlew build publish closeAndReleaseRepository
 - `3.1.1` - upgrade dependencies
 
 - `3.1.0` - migrate to maven central
+
+[build-status-badge]: https://github.com/nikialeksey/arspell/actions/workflows/ci.yml/badge.svg
+[build-status-link]: https://github.com/nikialeksey/arspell/actions/
+[codecov-badge]: https://codecov.io/gh/nikialeksey/arspell/branch/master/graph/badge.svg
+[codecov-link]: https://codecov.io/gh/nikialeksey/arspell
+[lib-version-badge]: https://img.shields.io/maven-central/v/com.nikialeksey/arspell.svg?label=lib
+[lib-version-link]: https://maven-badges.herokuapp.com/maven-central/com.nikialeksey/arspell
+[gradle-plugin-badge]: https://img.shields.io/maven-metadata/v/https/plugins.gradle.org/m2/com/nikialeksey/arspell-plugin-gradle/maven-metadata.xml.svg?label=plugin
+[gradle-plugin-link]: https://plugins.gradle.org/plugin/dev.youshallnotpass
+[license-badge]: https://img.shields.io/badge/License-MIT-yellow.svg
+[license-link]: https://github.com/nikialeksey/arspell/blob/master/LICENSE
