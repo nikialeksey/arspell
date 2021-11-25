@@ -1,6 +1,6 @@
 package com.nikialeksey.arspell
 
-import com.atlascopco.hunspell.Hunspell
+import com.nikialeksey.hunspell.Hunspell
 import com.nikialeksey.arspell.dictionary.DictionaryGroup
 import com.nikialeksey.arspell.hunspell.HunspellDictionary
 import com.nikialeksey.arspell.langtool.LanguageToolProof
