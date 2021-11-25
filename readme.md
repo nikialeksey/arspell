@@ -5,7 +5,7 @@
 
 [![Lib version][lib-version-badge]][lib-version-link]
 [![Gradle plugin version][gradle-plugin-badge]][gradle-plugin-link]
-[![License: MIT][license-badge]][license-link]
+[![License: GPLv3][license-badge]][license-link]
 
 Resources spell testing library and gradle plugin.
 
@@ -61,6 +61,8 @@ gradlew build publish closeAndReleaseRepository
 ```
 
 ## Changelog
+- `3.1.3` - support aarch64
+
 - `3.1.2` - small fixes for Android strings (skip format specifiers, skip 
 references in string resources)
 
@@ -75,6 +77,6 @@ references in string resources)
 [lib-version-badge]: https://img.shields.io/maven-central/v/com.nikialeksey/arspell.svg?label=lib
 [lib-version-link]: https://maven-badges.herokuapp.com/maven-central/com.nikialeksey/arspell
 [gradle-plugin-badge]: https://img.shields.io/maven-metadata/v/https/plugins.gradle.org/m2/com/nikialeksey/arspell-plugin-gradle/maven-metadata.xml.svg?label=plugin
-[gradle-plugin-link]: https://plugins.gradle.org/plugin/dev.youshallnotpass
-[license-badge]: https://img.shields.io/badge/License-MIT-yellow.svg
+[gradle-plugin-link]: https://plugins.gradle.org/plugin/com.nikialeksey.arspell
+[license-badge]: https://img.shields.io/badge/License-GPLv3-yellow
 [license-link]: https://github.com/nikialeksey/arspell/blob/master/LICENSE

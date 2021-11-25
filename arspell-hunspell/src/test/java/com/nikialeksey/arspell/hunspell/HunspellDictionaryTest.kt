@@ -1,6 +1,6 @@
 package com.nikialeksey.arspell.hunspell
 
-import com.atlascopco.hunspell.Hunspell
+import com.nikialeksey.hunspell.Hunspell
 import com.nikialeksey.arspell.DictionarySpell
 import com.nikialeksey.arspell.ErrorMessage
 import com.nikialeksey.arspell.strings.IgnoreKeysStrings

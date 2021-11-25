@@ -9,7 +9,7 @@ java {
 
 dependencies {
     implementation project(':arspell')
-    api 'com.atlascopco:hunspell-bridj:1.0.4'
+    api 'com.nikialeksey:jhunspell:1.0.5'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     testImplementation 'junit:junit:4.13.2'
 }
