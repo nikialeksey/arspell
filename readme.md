@@ -53,7 +53,7 @@ Then run it as gradle task:
 ./gradlew arspell
 ```
 
-## @todo #10:30m Write docs about language tool using
+## @todo #10:30 m Write docs about LanguageTool using
 
 ## Publish
 ```bash

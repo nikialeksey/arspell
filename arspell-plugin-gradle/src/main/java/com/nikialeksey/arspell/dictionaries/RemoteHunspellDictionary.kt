@@ -40,4 +40,8 @@ class RemoteHunspellDictionary(
     override fun suggest(word: Word): List<String> {
         return origin.value().suggest(word)
     }
+
+    override fun addIgnored(tokens: List<String>) {
+        origin.value().addIgnored(tokens)
+    }
 }

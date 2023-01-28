@@ -1,12 +1,12 @@
 package com.nikialeksey.arspell
 
-import com.nikialeksey.arspell.dictionaries.En
-import com.nikialeksey.arspell.dictionaries.Ru
+import com.nikialeksey.arspell.dictionaries.RemoteHunspellDictionary
 import com.nikialeksey.arspell.dictionary.Dictionary
 import com.nikialeksey.arspell.dictionary.DictionaryGroup
 import org.gradle.api.Action
 import org.gradle.api.model.ObjectFactory
 import java.io.File
+import java.net.URL
 import javax.inject.Inject
 
 open class DictionaryBuilder @Inject constructor(
@@ -23,16 +23,32 @@ open class DictionaryBuilder @Inject constructor(
     }
 
     fun en(): DictionaryBuilder {
-        dictionaries.add(En(cacheDir))
+        dictionaries.add(
+            RemoteHunspellDictionary(
+                URL("https://raw.githubusercontent.com/wooorm/dictionaries/main/dictionaries/en/index.dic"),
+                URL("https://raw.githubusercontent.com/wooorm/dictionaries/main/dictionaries/en/index.aff"),
+                File(cacheDir, "en")
+            )
+        )
         return this
     }
 
     fun ru(): DictionaryBuilder {
-        dictionaries.add(Ru(cacheDir))
+        dictionaries.add(
+            RemoteHunspellDictionary(
+                URL("https://raw.githubusercontent.com/wooorm/dictionaries/main/dictionaries/ru/index.dic"),
+                URL("https://raw.githubusercontent.com/wooorm/dictionaries/main/dictionaries/ru/index.aff"),
+                File(cacheDir, "ru")
+            )
+        )
         return this
     }
 
     fun build(): Dictionary {
-        return DictionaryGroup(dictionaries)
+        return if (dictionaries.isEmpty()) {
+            Dictionary.Dummy
+        } else {
+            DictionaryGroup(dictionaries)
+        }
     }
 }

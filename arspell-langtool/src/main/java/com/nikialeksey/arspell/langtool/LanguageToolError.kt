@@ -5,6 +5,7 @@ import org.languagetool.rules.RuleMatch
 
 class LanguageToolError(
     private val key: String,
+    private val text: String,
     private val rule: RuleMatch
 ) : Error {
     override fun key(): String {
@@ -12,9 +13,8 @@ class LanguageToolError(
     }
 
     override fun word(): String {
-        val text = rule.sentence.text
         val startIndex = Math.min(Math.max(rule.fromPos, 0), text.length - 1)
-        val endIndex = Math.min(Math.max(rule.toPos, 0), text.length)
+        val endIndex = Math.min(Math.max(rule.toPos, 0) + 1, text.length)
         return text.substring(startIndex, endIndex)
     }
 

@@ -15,4 +15,8 @@ class HunspellDictionary(
     override fun suggest(word: Word): List<String> {
         return hunspell.suggest(word.asString())
     }
+
+    override fun addIgnored(tokens: List<String>) {
+        tokens.forEach { hunspell.add(it) }
+    }
 }

@@ -9,7 +9,12 @@ java {
 
 dependencies {
     implementation project(':arspell')
-    api 'org.languagetool:language-all:5.5'
+    api 'org.languagetool:language-all:6.0'
+    implementation('com.google.guava:guava') {
+        version {
+            strictly '30.1-jre'
+        }
+    }
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     testImplementation 'junit:junit:4.12'
 }
