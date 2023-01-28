@@ -6,6 +6,9 @@ interface Arspell {
     class Fake(
         private val errors: List<Error>
     ) : Arspell {
+
+        constructor() : this(emptyList())
+
         override fun check(): List<Error> {
             return errors
         }

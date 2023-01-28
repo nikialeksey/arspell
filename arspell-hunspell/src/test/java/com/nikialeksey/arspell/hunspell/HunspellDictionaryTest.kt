@@ -7,6 +7,7 @@ import com.nikialeksey.arspell.strings.IgnoreKeysStrings
 import com.nikialeksey.arspell.strings.IgnoreWordsStrings
 import com.nikialeksey.arspell.strings.SimpleString
 import com.nikialeksey.arspell.strings.SimpleStrings
+import com.nikialeksey.arspell.words.SimpleWord
 import org.junit.Assert
 import org.junit.Test
 
@@ -71,5 +72,22 @@ class HunspellDictionaryTest {
             )
         ).check()
         Assert.assertTrue(ErrorMessage(errors).asString(), errors.isNotEmpty())
+    }
+
+    @Test
+    fun ignroeWordInSimpleDictionary() {
+        val dictionary = HunspellDictionary(
+            Hunspell(
+                "./src/test/assets/en_US/index.dic",
+                "./src/test/assets/en_US/index.aff"
+            )
+        )
+        Assert.assertFalse(
+            dictionary.isCorrect(SimpleWord("key", "arspell"))
+        )
+        dictionary.addIgnored(listOf("arspell"))
+        Assert.assertTrue(
+            dictionary.isCorrect(SimpleWord("key", "arspell"))
+        )
     }
 }

@@ -146,4 +146,61 @@ class ArspellPluginTest {
             Assert.fail(e.message)
         }
     }
+
+    @Test
+    fun configurePluginWithCorrectMdFileAndDifferentSpells() {
+        val mdFile = tmpFolder.newFile()
+        mdFile.writeText("Hello, world!\nПривет, мир!\n")
+        val projectFolder = tmpFolder.newFolder()
+        val project = ProjectBuilder.builder()
+            .withProjectDir(projectFolder)
+            .build()
+        project.pluginManager.apply("com.nikialeksey.arspell")
+        val extension = project.extensions.getByType(ArspellExtension::class.java)
+        extension.md(mdFile) { builder ->
+            builder.dictionary { dictBuilder ->
+                dictBuilder.en()
+                dictBuilder.ru()
+            }
+            builder.proofTool { proofToolBuilder ->
+                proofToolBuilder.en()
+                proofToolBuilder.ru()
+            }
+        }
+        project.evaluationDependsOn(":")
+        val arspellTask = project.tasks.getByName("arspell") as ArspellTask
+
+        try {
+            arspellTask.check()
+            // green
+        } catch (e: GradleException) {
+            Assert.fail(e.message)
+        }
+    }
+
+    @Test
+    fun configurePluginWithIncorrectMdFileOnlyProofToolSpell() {
+        val mdFile = tmpFolder.newFile()
+        mdFile.writeText("Привет, мир!\n**Жирное текст не был выбран первая строчками.**\n")
+        val projectFolder = tmpFolder.newFolder()
+        val project = ProjectBuilder.builder()
+            .withProjectDir(projectFolder)
+            .build()
+        project.pluginManager.apply("com.nikialeksey.arspell")
+        val extension = project.extensions.getByType(ArspellExtension::class.java)
+        extension.md(mdFile) { builder ->
+            builder.proofTool { proofToolBuilder ->
+                proofToolBuilder.ru()
+            }
+        }
+        project.evaluationDependsOn(":")
+        val arspellTask = project.tasks.getByName("arspell") as ArspellTask
+
+        try {
+            arspellTask.check()
+            Assert.fail("ProofTool did not found a morphological error.")
+        } catch (e: GradleException) {
+            // green
+        }
+    }
 }

@@ -4,25 +4,29 @@ import com.nikialeksey.arspell.Error
 import com.nikialeksey.arspell.proofs.ProofTool
 import com.nikialeksey.arspell.strings.String
 import org.languagetool.JLanguageTool
-import org.languagetool.rules.spelling.morfologik.MorfologikSpellerRule
+import org.languagetool.rules.spelling.SpellingCheckRule
 
 class LanguageToolProof(
     private val languageTool: JLanguageTool
 ) : ProofTool {
 
     override fun check(string: String): List<Error> {
-        return languageTool.check(string.asString()).map {
+        val text = string.asString()
+        return languageTool.check(text).map {
             LanguageToolError(
                 string.key(),
+                text,
                 it
             )
         }
     }
 
     override fun addIgnored(tokens: List<kotlin.String>) {
-        val rule = languageTool.allActiveRules.find {
-            it is MorfologikSpellerRule
-        } as MorfologikSpellerRule?
-        rule?.addIgnoreTokens(tokens)
+        languageTool
+            .allActiveRules
+            .filterIsInstance(SpellingCheckRule::class.java)
+            .forEach {
+                it.addIgnoreTokens(tokens)
+            }
     }
 }

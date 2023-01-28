@@ -19,4 +19,8 @@ class DictionaryGroup(
 
         return result
     }
+
+    override fun addIgnored(tokens: List<String>) {
+        dictionaries.forEach { it.addIgnored(tokens) }
+    }
 }

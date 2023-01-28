@@ -44,6 +44,7 @@ gradlePlugin {
 dependencies {
     implementation(project(":arspell"))
     implementation(project(":arspell-hunspell"))
+    implementation(project(":arspell-langtool"))
     implementation(project(":arspell-md"))
     implementation(project(":arspell-android"))
     implementation("org.apache.commons:commons-io:1.3.2")
